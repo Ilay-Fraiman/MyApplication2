@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean handled = false;
+        //counter+=5;  happens (function starts as long as key is held)
         if ((event.getSource() & InputDevice.SOURCE_GAMEPAD)
                 == InputDevice.SOURCE_GAMEPAD) {
-            if (event.getRepeatCount() == 0) {
+            if (event.getRepeatCount() == 0) {//stops the run into here if still pressed
                 if (keyCode == KeyEvent.KEYCODE_BUTTON_A){
                     ImageView eggImageView = findViewById(R.id.imageview_egg);
                     eggImageView.callOnClick();
@@ -72,5 +73,8 @@ public class MainActivity extends AppCompatActivity  {
         return super.onKeyDown(keyCode, event);
     }
 
-
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        return super.onKeyLongPress(keyCode, event);
+    }
 }
